@@ -1,0 +1,24 @@
+sample_dbt_connection:
+  target: sample
+  outputs:
+    reference:
+      project: burner-nidsingh3
+      dataset: ref_dataset
+      location: us-central1
+      method: oauth
+      priority: interactive
+      threads: 4
+      type: bigquery
+      job_execution_timeout_seconds: 100
+      job_retries: 1
+    sample:
+      project: burner-nidsingh3
+      dataset: sample_dataset
+      location: us-central1
+      method: oauth
+      priority: interactive
+      threads: 4
+      type: bigquery
+      job_execution_timeout_seconds: 100
+      job_retries: 1
+

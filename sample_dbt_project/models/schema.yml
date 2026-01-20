@@ -1,0 +1,33 @@
+
+version: 2
+
+sources:
+  - name: input_set
+    database: burner-nidsingh3 #project
+    schema: sample_dataset #dataset
+    tables:
+      - name: raw_transaction
+  - name: reference_set
+    database: burner-nidsingh3
+    schema: ref_dataset
+    tables:
+      - name: currency_reference
+
+models:
+  - name: base_transaction
+    description: "A starter dbt model"
+    columns:
+      - name: txn_id
+        description: "The primary key for this table"
+        tests:
+          - unique:
+              tags: ['schema-test']
+          - not_null:
+              tags: ['schema-test']
+
+      - name: currency_code
+        tests:
+          - accepted_length:
+              length: 3
+              tags: ['schema-test']
+
